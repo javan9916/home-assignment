@@ -1,21 +1,22 @@
 import './App.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { actionCreators } from './redux/index';
+import { Fragment } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import ListCard from './components/listCard';
+import CreateCard from './components/createCard';
+import EditCard from './components/editCard';
 
 function App() {
-
-  const users = useSelector((state) => state.users);
-  const dispatch = useDispatch();
-
-  console.log(users);
-
-  const { createUser } = bindActionCreators(actionCreators, dispatch)
-
   return (
-    <div className="App">
-      <button onClick={() => createUser()}> Add new user </button>
-    </div>
+    <Fragment>
+      <Router>
+        <Routes>
+          <Route exact path='/' element={ <ListCard/> }/>
+          <Route exact path='/create' element={ <CreateCard/> }/>
+          <Route exact path='/edit' element={ <EditCard/> }/>
+        </Routes>
+      </Router>
+    </Fragment>
   );
 }
 
