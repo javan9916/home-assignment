@@ -1,9 +1,9 @@
 const initialState = {    
     users: [    
-        { name: "Javier", lastname: "Araya", email: "jarayaporras@gmail.com", phone: "85285026", role: 1 },
-        { name: "Jorge", lastname: "Araya", email: "jarayaporras@gmail.com", phone: "85285026", role: 1 },
-        { name: "Alejandro", lastname: "Araya", email: "jarayaporras@gmail.com", phone: "85285026", role: 1 },
-        { name: "Jose", lastname: "Araya", email: "jarayaporras@gmail.com", phone: "85285026", role: 1 }
+        { name: "Javier", lastname: "Araya", email: "javier@gmail.com", phone: "8528-5026", role: "admin" },
+        { name: "Jorge", lastname: "Araya", email: "jorge@gmail.com", phone: "8528-5027", role: "regular" },
+        { name: "Alejandro", lastname: "Araya", email: "alejandro@gmail.com", phone: "8528-5028", role: "regular" },
+        { name: "Jose", lastname: "Araya", email: "jose@gmail.com", phone: "8528-5029", role: "regular" }
     ]    
 };    
 
