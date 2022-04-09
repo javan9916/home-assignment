@@ -37,7 +37,7 @@ export default function CreateCard() {
                         </div>
                     </Card.Header>
                     <br></br>
-                    <Card.Title> <h2> Team members </h2> </Card.Title>
+                    <Card.Title> <h2> Add a team member </h2> </Card.Title>
                     <Card.Subtitle className="mb-3 text-muted" style={{ padding: '1rem' }}>Set email, location and role</Card.Subtitle>
                     <Card.Text>
                         <Form onSubmit={handleSubmit}>
