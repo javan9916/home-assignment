@@ -5,7 +5,7 @@ import Item from './Item'
 
 export default function Group({ members }) {
     return (
-        <ListGroup variant="flush">
+        <ListGroup >
             { members.map((member) => (
                 <Item member={ member }></Item>
             )) }

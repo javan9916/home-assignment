@@ -11,8 +11,6 @@ import Group from "../List/Group";
 export default function List() {
     const { members } = useSelector((state) => state.members);
 
-    console.log(members);
-
     return (
         <Fragment>
             <Card style={{ width: '80%', margin: '3rem' }}>
@@ -24,9 +22,9 @@ export default function List() {
                             </Button>
                         </Link>
                     </Card.Header>
-                    <br></br>
+                    <br/>
                     <Card.Title> <h2> Team members </h2> </Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted" style={{ padding: '1rem' }}>You have {members.length} team members.</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted" style={{ padding: '0.5rem' }}>You have {members.length} team members.</Card.Subtitle>
                     <Card.Text>
                         <Group members={members} />
                     </Card.Text>

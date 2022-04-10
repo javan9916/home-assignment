@@ -6,7 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../redux/index';
 
-import { Card, Form, CloseButton, Button, Container, Row, Col } from "react-bootstrap";
+import {
+    Card, Form, CloseButton,
+    Button, Container, Row,
+    Col, ListGroup
+} from "react-bootstrap";
 
 export default function Edit() {
     const { members } = useSelector((state) => state.members);
@@ -60,7 +64,8 @@ export default function Edit() {
                     </Card.Header>
                     <br></br>
                     <Card.Title> <h2> Edit team member </h2> </Card.Title>
-                    <Card.Subtitle className="mb-3 text-muted" style={{ padding: '1rem' }}>Edit contact info, location and role</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted" style={{ padding: '0.5rem' }}>Edit contact info, location and role</Card.Subtitle>
+                    <hr/>
                     <Card.Text>
                         <Form>
                             <h4>Info</h4>
@@ -94,22 +99,29 @@ export default function Edit() {
                             </Form.Group>
 
                             <h4>Role</h4>
-                            <Form.Check
-                                type="radio"
-                                label="Regular - Can't delete members"
-                                name="role"
-                                value="regular"
-                                checked={role === 'regular'}
-                                onChange={(e) => setRole(e.target.value)}
-                                required />
-                            <Form.Check
-                                type="radio"
-                                label="Admin - Can delete members"
-                                name="role"
-                                value="admin"
-                                checked={role === 'admin'}
-                                onChange={(e) => setRole(e.target.value)}
-                                required />
+
+                            <ListGroup variant="flush">
+                                <ListGroup.Item>
+                                    <Form.Check
+                                        type="radio"
+                                        label="Regular - Can't delete members"
+                                        name="role"
+                                        value="regular"
+                                        checked={role === 'regular'}
+                                        onChange={(e) => setRole(e.target.value)}
+                                        required />
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <Form.Check
+                                        type="radio"
+                                        label="Admin - Can delete members"
+                                        name="role"
+                                        value="admin"
+                                        checked={role === 'admin'}
+                                        onChange={(e) => setRole(e.target.value)}
+                                        required />
+                                </ListGroup.Item>
+                            </ListGroup>
                         </Form>
 
                         <br />
