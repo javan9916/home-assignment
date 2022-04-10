@@ -2,18 +2,18 @@ import './App.css';
 import { Fragment } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import ListCard from './components/listCard';
-import CreateCard from './components/createCard';
-import EditCard from './components/editCard';
+import List from './components/Member/List';
+import Create from './components/Member/Create';
+import Edit from './components/Member/Edit';
 
 function App() {
   return (
     <Fragment>
       <Router>
         <Routes>
-          <Route exact path='/' element={ <ListCard/> }/>
-          <Route exact path='/create' element={ <CreateCard/> }/>
-          <Route exact path='/edit' element={ <EditCard/> }/>
+          <Route exact path='/' element={ <List/> }/>
+          <Route exact path='/create' element={ <Create/> }/>
+          <Route exact path='/edit/:memberId' element={ <Edit/> }/>
         </Routes>
       </Router>
     </Fragment>

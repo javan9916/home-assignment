@@ -1,28 +1,35 @@
 import React, { Fragment, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actionCreators } from '../redux/index';
+import { actionCreators } from '../../redux/index';
 
 import { Card, CloseButton, Form, Button } from "react-bootstrap";
 
-export default function CreateCard() {
+export default function Create() {
+    const { members } = useSelector((state) => state.members);
+    const navigate = useNavigate();
+
     const [name, setName] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [role, setRole] = useState('');
+    const [role, setRole] = useState('regular');
 
     const dispatch = useDispatch();
 
-    const { createUser } = bindActionCreators(actionCreators, dispatch)
+    const { addMember } = bindActionCreators(actionCreators, dispatch)
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const member = { name, lastname, email, phone, role }
-        createUser(member);
+        const id = members.length + 1;
+
+        const member = { id, name, lastname, email, phone, role }
+        addMember(member);
+
+        navigate('/');
     }
 
     return (
@@ -78,6 +85,7 @@ export default function CreateCard() {
                                 name="role"
                                 id="regular"
                                 value="regular"
+                                checked={role === 'regular'}
                                 onChange={(e) => setRole(e.target.value)}
                                 required />
                             <Form.Check
@@ -86,13 +94,13 @@ export default function CreateCard() {
                                 name="role"
                                 id="admin"
                                 value="admin"
+                                checked={role === 'admin'}
                                 onChange={(e) => setRole(e.target.value)}
                                 required />
 
                             <div style={{ textAlign: "right" }}>
                                 <Button style={{ width: '10rem' }} type="submit" variant="primary"> Save </Button>
                             </div>
-                            {role}
                         </Form>
                     </Card.Text>
                 </Card.Body>
