@@ -1,59 +1,44 @@
 import React, { Fragment, useState } from 'react';
-
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../redux/index';
 
-import {
-    Card, Form, CloseButton,
-    Button, Container, Row,
-    Col, ListGroup
-} from 'react-bootstrap';
+import { Card, CloseButton, Form, Button, ListGroup } from 'react-bootstrap';
 
 
 /**
  * 
- * @description This view allows users to edit all the information from a team member
- * @returns a template to edit members of a team
+ * @description This view allows users to add a new team member to the list
+ * @returns a template to add new members to a team
  */
-export default function Edit() {
+export default function Add() {
     // Getting the members from redux store
     const { members } = useSelector((state) => state.members);
 
-    // Importing the editMember and deleteMember functions from redux
+    const navigate = useNavigate();
+
+    // Importing the addMember function from redux
     const dispatch = useDispatch();
-    const { editMember, deleteMember } = bindActionCreators(actionCreators, dispatch);
-
-    // Getting the memberId from path params
-    let { memberId } = useParams();
-    memberId = parseInt(memberId);
-
-    const selectedMember = members.filter(item => item.id === memberId)[0];
+    const { addMember } = bindActionCreators(actionCreators, dispatch)
 
     // Form handling states
-    const [name, setName] = useState(selectedMember.name);
-    const [lastname, setLastname] = useState(selectedMember.lastname);
-    const [email, setEmail] = useState(selectedMember.email);
-    const [phone, setPhone] = useState(selectedMember.phone);
-    const [role, setRole] = useState(selectedMember.role);
+    const [name, setName] = useState("");
+    const [lastname, setLastname] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [role, setRole] = useState("regular");
 
-    const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Creating a new member object and sending it to edit an existing team member
-        const member = { id: memberId, name, lastname, email, phone, role };
-        editMember(member);
-        navigate("/");
-    }
+        const newMemberId = members.length + 1;
 
-    const handleDeleteSubmit = (e) => {
-        e.preventDefault();
+        // Creating a new member object and sending it to add a new team member
+        const member = { id: newMemberId, name, lastname, email, phone, role }
+        addMember(member);
 
-        // Sending memberId to delete an existing team member
-        deleteMember(memberId);
         navigate("/");
     }
 
@@ -68,11 +53,11 @@ export default function Edit() {
                             </Link>
                         </div>
                     </Card.Header>
-                    <br></br>
-                    <Card.Title> <h2> Edit team member </h2> </Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted" style={{ padding: "0.5rem" }}>Edit contact info, location and role</Card.Subtitle>
+                    <br/>
+                    <Card.Title> <h2> Add a team member </h2> </Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted" style={{ padding: "0.5rem" }}>Set email, location and role</Card.Subtitle>
                     <hr/>
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                         <h4>Info</h4>
                         <Form.Group className="mb-3" controlId="name">
                             <Form.Control
@@ -128,28 +113,14 @@ export default function Edit() {
                                     required />
                             </ListGroup.Item>
                         </ListGroup>
+
+                        <br />
+                        <div style={{ textAlign: "right" }}>
+                            <Button style={{ width: "10rem" }} type="submit" variant="primary"> Save </Button>
+                        </div>
                     </Form>
-
-                    <br />
-
-                    <Container>
-                        <Row>
-                            <Col>
-                                <Form onSubmit={handleDeleteSubmit}>
-                                    <Button style={{ width: "10rem" }} type="submit" variant="outline-danger"> Delete </Button>
-                                </Form>
-                            </Col>
-                            <Col>
-                                <Form onSubmit={handleSubmit}>
-                                    <div style={{ textAlign: "right" }}>
-                                        <Button style={{ width: "10rem" }} type="submit" variant="primary"> Save </Button>
-                                    </div>
-                                </Form>
-                            </Col>
-                        </Row>
-                    </Container>
                 </Card.Body>
             </Card>
         </Fragment>
-    )
+    );
 }

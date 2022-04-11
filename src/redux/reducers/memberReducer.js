@@ -1,9 +1,16 @@
+// Reducer initial state list
 const initialState = {
     members: [
         { id: 1, name: "Javier", lastname: "Araya", email: "javier@gmail.com", phone: "8528-5026", role: "admin" },
     ]
 };
 
+/**
+ * 
+ * @param {*} state: Initial state of the reducer
+ * @param {*} action: Action to take, eg: "ADD" new team member, "EDIT" existing team member, etc...
+ * @returns a redux reducer with team member handling actions
+ */
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case "ADD":
