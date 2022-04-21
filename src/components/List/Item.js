@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { ListGroup } from 'react-bootstrap';
 import { BsPersonCircle } from 'react-icons/bs';
+import '../styles.css';
 
 
 /**
@@ -32,10 +33,10 @@ export default function Item({ member }) {
             onClick={handleNavigation}
             action>
                 <div>
-                    <BsPersonCircle style={{ width: "45px", height: "45px", margin: "1rem" }} />
+                    <BsPersonCircle className="person-circle" />
                 </div>
 
-                <div className="ms-2 me-auto" style={{ marginTop: "0.5rem" }}>
+                <div className="ms-2 me-auto card-subtitle">
                     {
                         role === "regular" ?
                             <h6>{name + " " + lastname}</h6>

@@ -13,7 +13,7 @@ export default function Group({ members }) {
     return (
         <ListGroup>
             { members.map((member) => (
-                <Item member={ member } key={member.id.toString()}></Item>
+                <Item member={ member } key={member.id}></Item>
             )) }
         </ListGroup>
     )

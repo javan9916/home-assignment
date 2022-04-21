@@ -1,0 +1,38 @@
+/* General */
+.card {
+    width: 80%;
+    margin: 3rem;
+}
+
+.card-header {
+    background-color: white !important;
+    text-align: right;
+}
+
+.close-button-container {
+    margin-left: auto;
+}
+
+.form-button {
+    width: 7em;
+}
+
+.right-button-container {
+    text-align: right;
+}
+
+.card-subtitle {
+    padding: 0.5rem;
+}
+
+/* List.js */
+.add-header-button {
+    padding: 6px 10px !important;
+}
+
+/* Item.js */
+.person-circle { 
+    width: 45px; 
+    height: 45px; 
+    margin: 1rem;
+}

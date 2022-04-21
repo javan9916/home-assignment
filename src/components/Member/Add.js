@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../redux/index';
 
 import { Card, CloseButton, Form, Button, ListGroup } from 'react-bootstrap';
+import '../styles.css';
 
 
 /**
@@ -44,10 +45,10 @@ export default function Add() {
 
     return (
         <Fragment>
-            <Card style={{ width: "80%", margin: "3rem" }}>
+            <Card className="card">
                 <Card.Body>
-                    <Card.Header style={{ display: "flex", backgroundColor: "white" }}>
-                        <div style={{ marginLeft: "auto" }}>
+                    <Card.Header className="card-header">
+                        <div className="close-button-container">
                             <Link to="/">
                                 <CloseButton />
                             </Link>
@@ -55,7 +56,7 @@ export default function Add() {
                     </Card.Header>
                     <br/>
                     <Card.Title> <h2> Add a team member </h2> </Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted" style={{ padding: "0.5rem" }}>Set email, location and role</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted card-subtitle">Set email, location and role</Card.Subtitle>
                     <hr/>
                     <Form onSubmit={handleSubmit}>
                         <h4>Info</h4>
@@ -115,8 +116,8 @@ export default function Add() {
                         </ListGroup>
 
                         <br />
-                        <div style={{ textAlign: "right" }}>
-                            <Button style={{ width: "10rem" }} type="submit" variant="primary"> Save </Button>
+                        <div className="right-button-container">
+                            <Button className="form-button" type="submit" variant="primary"> Save </Button>
                         </div>
                     </Form>
                 </Card.Body>

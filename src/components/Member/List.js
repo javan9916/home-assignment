@@ -8,6 +8,8 @@ import { BsPlusLg } from 'react-icons/bs';
 
 import Group from '../List/Group';
 
+import '../styles.css';
+
 
 /**
  * 
@@ -20,18 +22,18 @@ export default function List() {
 
     return (
         <Fragment>
-            <Card style={{ width: "80%", margin: "3rem" }}>
+            <Card className="card">
                 <Card.Body>
-                    <Card.Header style={{ display: "flex", backgroundColor: "white" }}>
-                        <Link to="/add" style={{ marginLeft: "auto" }}>
-                            <Button variant="outline-primary" style={{ padding: "6px 10px" }}>
+                    <Card.Header className="card-header">
+                        <Link to="/add" className="right-button-container">
+                            <Button variant="outline-primary" className="add-header-button">
                                 <BsPlusLg />
                             </Button>
                         </Link>
                     </Card.Header>
                     <br/>
                     <Card.Title> <h2> Team members </h2> </Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted" style={{ padding: "0.5rem" }}>You have {members.length} team members.</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted card-subtitle">You have {members.length} team members.</Card.Subtitle>
                     <Group members={members}/>
                 </Card.Body>
             </Card>

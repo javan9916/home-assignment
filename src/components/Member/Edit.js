@@ -11,6 +11,7 @@ import {
     Button, Container, Row,
     Col, ListGroup
 } from 'react-bootstrap';
+import '../styles.css';
 
 
 /**
@@ -59,10 +60,10 @@ export default function Edit() {
 
     return (
         <Fragment>
-            <Card style={{ width: "80%", margin: "3rem" }}>
+            <Card className="card">
                 <Card.Body>
-                    <Card.Header style={{ display: "flex", backgroundColor: "white" }}>
-                        <div style={{ marginLeft: "auto" }}>
+                    <Card.Header className="card-header">
+                        <div className="close-button-container">
                             <Link to="/">
                                 <CloseButton />
                             </Link>
@@ -70,7 +71,7 @@ export default function Edit() {
                     </Card.Header>
                     <br></br>
                     <Card.Title> <h2> Edit team member </h2> </Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted" style={{ padding: "0.5rem" }}>Edit contact info, location and role</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted card-subtitle">Edit contact info, location and role</Card.Subtitle>
                     <hr/>
                     <Form>
                         <h4>Info</h4>
@@ -136,13 +137,13 @@ export default function Edit() {
                         <Row>
                             <Col>
                                 <Form onSubmit={handleDeleteSubmit}>
-                                    <Button style={{ width: "10rem" }} type="submit" variant="outline-danger"> Delete </Button>
+                                    <Button className="form-button" type="submit" variant="outline-danger"> Delete </Button>
                                 </Form>
                             </Col>
                             <Col>
                                 <Form onSubmit={handleSubmit}>
-                                    <div style={{ textAlign: "right" }}>
-                                        <Button style={{ width: "10rem" }} type="submit" variant="primary"> Save </Button>
+                                    <div className="right-button-container">
+                                        <Button className="form-button" type="submit" variant="primary"> Save </Button>
                                     </div>
                                 </Form>
                             </Col>
